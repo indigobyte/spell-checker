@@ -1,0 +1,2393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DD5CE980-85EE-4A11-A88C-A3C2D5EDEFED}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UtilsLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\DrExplain.Toolset.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)__bin64\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)__bin64_debug\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;UTILS_EXPORTS;CRYPTOPP_EXPORTS;USE_PRECOMPILED_HEADERS;ICU_NO_USER_DATA_OVERRIDE;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;RBBI_DEBUG;U_ATTRIBUTE_DEPRECATED=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <DisableSpecificWarnings>4267;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;UTILS_EXPORTS;CRYPTOPP_EXPORTS;USE_PRECOMPILED_HEADERS;ICU_NO_USER_DATA_OVERRIDE;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;RBBI_DEBUG;U_ATTRIBUTE_DEPRECATED=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <DisableSpecificWarnings>4267;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="icu\data\convrtrs.txt" />
+    <Text Include="icu\data\readme.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="crypto\3way.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\adler32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\algebra.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\algparam.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\arc4.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\asn.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\base32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\base64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\basecode.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\bfinit.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\blowfish.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\blumshub.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\camellia.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\cast.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\casts.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\cbcmac.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\channels.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\crc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\cryptlib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\cryptlib_bds.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\default.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\des.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\dessp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\dh.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\dh2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\dll.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\dsa.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\ec2n.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\eccrypto.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\ecp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\elgamal.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\emsa2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\eprecomp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\esign.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\files.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\filters.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\fips140.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\fipsalgt.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gf256.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gf2n.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gf2_32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gfpcrypt.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gost.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\gzip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\haval.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\hex.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\hmac.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\hrtimer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\ida.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\idea.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\integer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\iterhash.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\luc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\mars.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\marss.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\md2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\md4.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\md5.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\md5mac.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\misc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\modes.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\mqueue.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\mqv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\nbtheory.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\network.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\oaep.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\osrng.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\panama.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\pkcspad.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\polynomi.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\pssr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\pubkey.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\queue.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rabin.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\randpool.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rc2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rc5.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rc6.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rdtables.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rijndael.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\ripemd.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rng.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rsa.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\rw.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\safer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\salsa.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\seal.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\serpent.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\sha.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\shacal2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\shark.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\sharkbox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\simple.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\skipjack.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\socketft.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\square.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\squaretb.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\strciphr.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\tea.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\tftables.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\tiger.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\tigertab.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\trdlocal.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\ttmac.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\twofish.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\wait.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\wake.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\whrlpool.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\winpipes.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\xtr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\xtrcrypt.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\zdeflate.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\zinflate.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto\zlib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\appendable.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\bmpset.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\brkeng.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\brkiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\bytestream.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\bytestrie.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\bytestriebuilder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\bytestrieiterator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\caniter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\chariter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\charstr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\cmemory.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\cstring.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\cwchar.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\dictbe.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\dictionarydata.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\dtintrv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\errorcode.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\filterednormalizer2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\icudataver.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\icuplug.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\listformatter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\loadednormalizer2impl.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locavailable.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locbased.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locdispnames.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locid.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\loclikely.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locmap.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locresdata.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\locutil.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\messagepattern.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\normalizer2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\normalizer2impl.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\normlzr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\parsepos.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\patternprops.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\propname.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\propsvec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\punycode.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\putil.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbi.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbidata.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbinode.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbirb.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbiscan.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbisetb.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbistbl.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\rbbitblb.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\resbund.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\resbund_cnv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ruleiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\schriter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\serv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servlk.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servlkf.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servls.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servnotf.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servrbf.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\servslkf.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\sharedobject.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\simplepatternformatter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\stringpiece.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\stringtriebuilder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\stubdata.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uarrsort.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ubidi.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ubidiln.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ubidiwrt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ubidi_props.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ubrk.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucase.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucasemap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucasemap_titlecase_brkiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucat.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uchar.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucharstrie.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucharstriebuilder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucharstrieiterator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uchriter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucln_cmn.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucmndata.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv2022.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvbocu.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvdisp.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvhz.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvisci.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvlat1.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvmbcs.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvscsu.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnvsel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_bld.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_cb.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_cnv.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_ct.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_err.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_ext.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_io.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_lmb.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_set.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_u16.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_u32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_u7.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucnv_u8.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ucol_swp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\udata.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\udatamem.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\udataswp.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uenum.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uhash.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uhash_us.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uidna.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uinit.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uinvchar.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ulist.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ulistformatter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uloc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uloc_keytype.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uloc_tag.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\umapfile.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\umath.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\umutex.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unames.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unifiedcache.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unifilt.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unifunct.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uniset.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unisetspan.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uniset_closure.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uniset_props.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr_case.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr_case_locale.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr_cnv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr_props.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unistr_titlecase_brkiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unorm.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\unormcmp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uobject.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uprops.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uresbund.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uresdata.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ures_cnv.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uscript.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uscript_props.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\usc_impl.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uset.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\usetiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uset_props.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ushape.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\usprep.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustack.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustrcase.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustrcase_locale.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustrenum.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustrfmt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustring.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustrtrns.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustr_cnv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustr_titlecase_brkiter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\ustr_wcs.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utext.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utf_impl.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\util.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\util_props.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utrace.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utrie.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utrie2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utrie2_builder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uts46.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\utypes.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uvector.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uvectr32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\uvectr64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="icu\wintz.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="minizip\ioapi.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="minizip\iowin32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="minizip\mztools.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="minizip\unzip.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="minizip\zip.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_chartables.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_compile.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_config.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_dfa_exec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_exec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_fullinfo.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_get.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_globals.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_info.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_maketables.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_newline.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_ord2utf8.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_refcount.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_study.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_tables.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_try_flipped.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_ucd.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_valid_utf8.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_version.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="pcre\pcre_xclass.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\add.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\dec.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\detail\div_base.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\div.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\inc.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\mod.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\mul.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\arithmetic\sub.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\data.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\detail\get_data.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\insert.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\pop_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\push_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\push_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\remove.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\replace.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\reverse.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\array\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\assert_msg.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\cat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comma.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comma_if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\greater.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\greater_equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\less.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\less_equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\comparison\not_equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\config\config.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\config\limits.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\deduce_d.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\detail\dmc\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\detail\edg\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\detail\msvc\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\detail\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\expr_if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\expr_iif.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\iif.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\control\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\debug.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\debug\assert.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\debug\error.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\debug\line.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\dec.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\auto_rec.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\check.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\dmc\auto_rec.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\is_binary.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\is_nullary.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\is_unary.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\null.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\detail\split.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum_params_with_a_default.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum_params_with_defaults.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum_shifted.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\enum_shifted_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\expand.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\expr_if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\apply.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\detail\is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\expand.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\identity.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\intercept.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\is_1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\is_empty_or_1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\is_empty_variadic.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\facilities\overload.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\identity.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\inc.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iterate.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\lower1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\lower2.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\lower3.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\lower4.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\lower5.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\upper1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\upper2.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\upper3.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\upper4.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\bounds\upper5.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\finish.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\forward1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\forward2.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\forward3.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\forward4.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\forward5.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\reverse1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\reverse2.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\reverse3.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\reverse4.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\iter\reverse5.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\local.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\rlocal.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\self.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\detail\start.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\iterate.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\local.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\iteration\self.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\library.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\limits.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\adt.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\append.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\at.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\cat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\detail\dmc\fold_left.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\detail\edg\fold_left.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\detail\edg\fold_right.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\detail\fold_left.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\detail\fold_right.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\filter.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\first_n.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\fold_left.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\fold_right.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\for_each.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\for_each_i.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\for_each_product.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\rest_n.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\reverse.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\list\transform.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\and.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\bitand.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\bitnor.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\bitor.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\bitxor.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\bool.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\compl.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\nor.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\not.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\or.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\logical\xor.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\max.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\min.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\comma.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\comma_if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\detail\is_begin_parens.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\is_begin_parens.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\paren.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\paren_if.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\punctuation\remove_parens.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat_2nd.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat_3rd.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat_from_to.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat_from_to_2nd.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repeat_from_to_3rd.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\deduce_r.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\deduce_z.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\detail\dmc\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\detail\edg\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\detail\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\detail\msvc\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_binary_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_params_with_a_default.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_params_with_defaults.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_shifted.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_shifted_binary_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_shifted_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_trailing.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_trailing_binary_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\enum_trailing_params.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\for.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\repeat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\repetition\repeat_from_to.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\selection.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\selection\max.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\selection\min.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\cat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\detail\binary_transform.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\detail\is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\detail\split.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\detail\to_list_msvc.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\filter.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\first_n.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\fold_left.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\fold_right.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\for_each.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\for_each_i.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\for_each_product.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\insert.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\pop_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\push_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\push_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\remove.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\replace.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\rest_n.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\reverse.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\subseq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\transform.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\seq\variadic_seq_to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\counter.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\counter.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\def.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\shared.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\slot1.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\slot2.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\slot3.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\slot4.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\detail\slot5.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\slot\slot.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\stringize.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\detail\is_single_return.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\eat.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\insert.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\pop_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\push_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\push_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\rem.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\remove.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\replace.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\reverse.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\tuple\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\detail\is_single_return.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\variadic\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\while.hpp" />
+    <ClInclude Include="additional\include\path\boost\preprocessor\wstringize.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\array\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\array\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_number.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\assert_is_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\adjust_tuple_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\assert.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\data_equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\data_equal_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\empty_result.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\equal_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\equal_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\identifier_concat.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\identifier_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\idprefix.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_array_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_empty_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_empty_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_entire.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_number.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\is_type_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\match_identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\match_identifier_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\match_single_identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\modifiers.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\mods.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\nil_registration.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\not_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\number_registration.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\only_after.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\parens.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\parens_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\parens_split.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_1.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_10.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_11.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_12.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_13.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_14.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_15.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_16.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_2.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_3.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_4.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_5.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_6.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_7.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_8.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_9.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_headers.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\data_equal\data_equal_specific.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_1.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_10.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_11.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_12.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_13.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_14.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_15.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_16.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_2.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_3.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_4.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_5.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_6.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_7.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_8.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_9.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\recurse\equal\equal_headers.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_arity.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_common.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_size.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\sequence_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\setup.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\type_registration.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\detail\variadic_pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\elem.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\enum.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\get_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\identity.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_empty_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_empty_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_identifier.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_multi.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_number.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_parens_empty.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_type.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\is_unary.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\list\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\list\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\not_equal.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\is_vmd_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\pop_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\push_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\push_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\remove.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\seq\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\to_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\is_vmd_tuple.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\pop_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\pop_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\push_back.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\push_front.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\remove.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\size.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\to_array.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\to_list.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\tuple\to_seq.hpp" />
+    <ClInclude Include="additional\include\path\boost\vmd\vmd.hpp" />
+    <ClInclude Include="crypto\3way.h" />
+    <ClInclude Include="crypto\adler32.h" />
+    <ClInclude Include="crypto\aes.h" />
+    <ClInclude Include="crypto\algebra.h" />
+    <ClInclude Include="crypto\algparam.h" />
+    <ClInclude Include="crypto\arc4.h" />
+    <ClInclude Include="crypto\argnames.h" />
+    <ClInclude Include="crypto\asn.h" />
+    <ClInclude Include="crypto\base32.h" />
+    <ClInclude Include="crypto\base64.h" />
+    <ClInclude Include="crypto\basecode.h" />
+    <ClInclude Include="crypto\blowfish.h" />
+    <ClInclude Include="crypto\blumshub.h" />
+    <ClInclude Include="crypto\camellia.h" />
+    <ClInclude Include="crypto\cast.h" />
+    <ClInclude Include="crypto\cbcmac.h" />
+    <ClInclude Include="crypto\channels.h" />
+    <ClInclude Include="crypto\config.h" />
+    <ClInclude Include="crypto\crc.h" />
+    <ClInclude Include="crypto\cryptlib.h" />
+    <ClInclude Include="crypto\default.h" />
+    <ClInclude Include="crypto\des.h" />
+    <ClInclude Include="crypto\dh.h" />
+    <ClInclude Include="crypto\dh2.h" />
+    <ClInclude Include="crypto\dmac.h" />
+    <ClInclude Include="crypto\dsa.h" />
+    <ClInclude Include="crypto\ec2n.h" />
+    <ClInclude Include="crypto\eccrypto.h" />
+    <ClInclude Include="crypto\ecp.h" />
+    <ClInclude Include="crypto\elgamal.h" />
+    <ClInclude Include="crypto\emsa2.h" />
+    <ClInclude Include="crypto\eprecomp.h" />
+    <ClInclude Include="crypto\esign.h" />
+    <ClInclude Include="crypto\factory.h" />
+    <ClInclude Include="crypto\files.h" />
+    <ClInclude Include="crypto\filters.h" />
+    <ClInclude Include="crypto\fips140.h" />
+    <ClInclude Include="crypto\fltrimpl.h" />
+    <ClInclude Include="crypto\gf256.h" />
+    <ClInclude Include="crypto\gf2n.h" />
+    <ClInclude Include="crypto\gf2_32.h" />
+    <ClInclude Include="crypto\gfpcrypt.h" />
+    <ClInclude Include="crypto\gost.h" />
+    <ClInclude Include="crypto\gzip.h" />
+    <ClInclude Include="crypto\haval.h" />
+    <ClInclude Include="crypto\hex.h" />
+    <ClInclude Include="crypto\hmac.h" />
+    <ClInclude Include="crypto\hrtimer.h" />
+    <ClInclude Include="crypto\ida.h" />
+    <ClInclude Include="crypto\idea.h" />
+    <ClInclude Include="crypto\integer.h" />
+    <ClInclude Include="crypto\iterhash.h" />
+    <ClInclude Include="crypto\lubyrack.h" />
+    <ClInclude Include="crypto\luc.h" />
+    <ClInclude Include="crypto\mars.h" />
+    <ClInclude Include="crypto\md2.h" />
+    <ClInclude Include="crypto\md4.h" />
+    <ClInclude Include="crypto\md5.h" />
+    <ClInclude Include="crypto\md5mac.h" />
+    <ClInclude Include="crypto\mdc.h" />
+    <ClInclude Include="crypto\misc.h" />
+    <ClInclude Include="crypto\modarith.h" />
+    <ClInclude Include="crypto\modes.h" />
+    <ClInclude Include="crypto\modexppc.h" />
+    <ClInclude Include="crypto\mqueue.h" />
+    <ClInclude Include="crypto\mqv.h" />
+    <ClInclude Include="crypto\nbtheory.h" />
+    <ClInclude Include="crypto\network.h" />
+    <ClInclude Include="crypto\nr.h" />
+    <ClInclude Include="crypto\oaep.h" />
+    <ClInclude Include="crypto\oids.h" />
+    <ClInclude Include="crypto\osrng.h" />
+    <ClInclude Include="crypto\panama.h" />
+    <ClInclude Include="crypto\pch.h" />
+    <ClInclude Include="crypto\pkcspad.h" />
+    <ClInclude Include="crypto\polynomi.h" />
+    <ClInclude Include="crypto\pssr.h" />
+    <ClInclude Include="crypto\pubkey.h" />
+    <ClInclude Include="crypto\pwdbased.h" />
+    <ClInclude Include="crypto\queue.h" />
+    <ClInclude Include="crypto\rabin.h" />
+    <ClInclude Include="crypto\randpool.h" />
+    <ClInclude Include="crypto\rc2.h" />
+    <ClInclude Include="crypto\rc5.h" />
+    <ClInclude Include="crypto\rc6.h" />
+    <ClInclude Include="crypto\resource.h" />
+    <ClInclude Include="crypto\rijndael.h" />
+    <ClInclude Include="crypto\ripemd.h" />
+    <ClInclude Include="crypto\rng.h" />
+    <ClInclude Include="crypto\rsa.h" />
+    <ClInclude Include="crypto\rw.h" />
+    <ClInclude Include="crypto\safer.h" />
+    <ClInclude Include="crypto\salsa.h" />
+    <ClInclude Include="crypto\seal.h" />
+    <ClInclude Include="crypto\secblock.h" />
+    <ClInclude Include="crypto\seckey.h" />
+    <ClInclude Include="crypto\serpent.h" />
+    <ClInclude Include="crypto\sha.h" />
+    <ClInclude Include="crypto\shacal2.h" />
+    <ClInclude Include="crypto\shark.h" />
+    <ClInclude Include="crypto\simple.h" />
+    <ClInclude Include="crypto\skipjack.h" />
+    <ClInclude Include="crypto\smartptr.h" />
+    <ClInclude Include="crypto\socketft.h" />
+    <ClInclude Include="crypto\square.h" />
+    <ClInclude Include="crypto\stdcpp.h" />
+    <ClInclude Include="crypto\strciphr.h" />
+    <ClInclude Include="crypto\tea.h" />
+    <ClInclude Include="crypto\tiger.h" />
+    <ClInclude Include="crypto\trdlocal.h" />
+    <ClInclude Include="crypto\trunhash.h" />
+    <ClInclude Include="crypto\ttmac.h" />
+    <ClInclude Include="crypto\twofish.h" />
+    <ClInclude Include="crypto\validate.h" />
+    <ClInclude Include="crypto\wait.h" />
+    <ClInclude Include="crypto\wake.h" />
+    <ClInclude Include="crypto\whrlpool.h" />
+    <ClInclude Include="crypto\winpipes.h" />
+    <ClInclude Include="crypto\words.h" />
+    <ClInclude Include="crypto\xormac.h" />
+    <ClInclude Include="crypto\xtr.h" />
+    <ClInclude Include="crypto\xtrcrypt.h" />
+    <ClInclude Include="crypto\zdeflate.h" />
+    <ClInclude Include="crypto\zinflate.h" />
+    <ClInclude Include="crypto\zlib.h" />
+    <ClInclude Include="icu\bmpset.h" />
+    <ClInclude Include="icu\brkeng.h" />
+    <ClInclude Include="icu\charstr.h" />
+    <ClInclude Include="icu\cmemory.h" />
+    <ClInclude Include="icu\cpputils.h" />
+    <ClInclude Include="icu\cstring.h" />
+    <ClInclude Include="icu\cwchar.h" />
+    <ClInclude Include="icu\dictbe.h" />
+    <ClInclude Include="icu\dictionarydata.h" />
+    <ClInclude Include="icu\hash.h" />
+    <ClInclude Include="icu\icuplugimp.h" />
+    <ClInclude Include="icu\localsvc.h" />
+    <ClInclude Include="icu\locbased.h" />
+    <ClInclude Include="icu\locmap.h" />
+    <ClInclude Include="icu\locutil.h" />
+    <ClInclude Include="icu\messageimpl.h" />
+    <ClInclude Include="icu\msvcres.h" />
+    <ClInclude Include="icu\mutex.h" />
+    <ClInclude Include="icu\norm2allmodes.h" />
+    <ClInclude Include="icu\norm2_nfc_data.h" />
+    <ClInclude Include="icu\normalizer2impl.h" />
+    <ClInclude Include="icu\patternprops.h" />
+    <ClInclude Include="icu\propname.h" />
+    <ClInclude Include="icu\propname_data.h" />
+    <ClInclude Include="icu\propsvec.h" />
+    <ClInclude Include="icu\punycode.h" />
+    <ClInclude Include="icu\putilimp.h" />
+    <ClInclude Include="icu\rbbidata.h" />
+    <ClInclude Include="icu\rbbinode.h" />
+    <ClInclude Include="icu\rbbirb.h" />
+    <ClInclude Include="icu\rbbirpt.h" />
+    <ClInclude Include="icu\rbbiscan.h" />
+    <ClInclude Include="icu\rbbisetb.h" />
+    <ClInclude Include="icu\rbbitblb.h" />
+    <ClInclude Include="icu\ruleiter.h" />
+    <ClInclude Include="icu\serv.h" />
+    <ClInclude Include="icu\servloc.h" />
+    <ClInclude Include="icu\servnotf.h" />
+    <ClInclude Include="icu\sharedobject.h" />
+    <ClInclude Include="icu\simplepatternformatter.h" />
+    <ClInclude Include="icu\sprpimpl.h" />
+    <ClInclude Include="icu\uarrsort.h" />
+    <ClInclude Include="icu\uassert.h" />
+    <ClInclude Include="icu\ubidiimp.h" />
+    <ClInclude Include="icu\ubidi_props.h" />
+    <ClInclude Include="icu\ubidi_props_data.h" />
+    <ClInclude Include="icu\ubrkimpl.h" />
+    <ClInclude Include="icu\ucase.h" />
+    <ClInclude Include="icu\ucase_props_data.h" />
+    <ClInclude Include="icu\uchar_props_data.h" />
+    <ClInclude Include="icu\ucln.h" />
+    <ClInclude Include="icu\ucln_cmn.h" />
+    <ClInclude Include="icu\ucln_imp.h" />
+    <ClInclude Include="icu\ucmndata.h" />
+    <ClInclude Include="icu\ucnvmbcs.h" />
+    <ClInclude Include="icu\ucnv_bld.h" />
+    <ClInclude Include="icu\ucnv_cnv.h" />
+    <ClInclude Include="icu\ucnv_ext.h" />
+    <ClInclude Include="icu\ucnv_imp.h" />
+    <ClInclude Include="icu\ucnv_io.h" />
+    <ClInclude Include="icu\ucol_data.h" />
+    <ClInclude Include="icu\ucol_swp.h" />
+    <ClInclude Include="icu\udatamem.h" />
+    <ClInclude Include="icu\udataswp.h" />
+    <ClInclude Include="icu\uelement.h" />
+    <ClInclude Include="icu\uenumimp.h" />
+    <ClInclude Include="icu\uhash.h" />
+    <ClInclude Include="icu\uinvchar.h" />
+    <ClInclude Include="icu\ulist.h" />
+    <ClInclude Include="icu\ulocimp.h" />
+    <ClInclude Include="icu\umapfile.h" />
+    <ClInclude Include="icu\umutex.h" />
+    <ClInclude Include="icu\unicode\appendable.h" />
+    <ClInclude Include="icu\unicode\brkiter.h" />
+    <ClInclude Include="icu\unicode\bytestream.h" />
+    <ClInclude Include="icu\unicode\bytestrie.h" />
+    <ClInclude Include="icu\unicode\bytestriebuilder.h" />
+    <ClInclude Include="icu\unicode\caniter.h" />
+    <ClInclude Include="icu\unicode\chariter.h" />
+    <ClInclude Include="icu\unicode\dbbi.h" />
+    <ClInclude Include="icu\unicode\docmain.h" />
+    <ClInclude Include="icu\unicode\dtintrv.h" />
+    <ClInclude Include="icu\unicode\enumset.h" />
+    <ClInclude Include="icu\unicode\errorcode.h" />
+    <ClInclude Include="icu\unicode\icudataver.h" />
+    <ClInclude Include="icu\unicode\icuplug.h" />
+    <ClInclude Include="icu\unicode\idna.h" />
+    <ClInclude Include="icu\unicode\listformatter.h" />
+    <ClInclude Include="icu\unicode\localpointer.h" />
+    <ClInclude Include="icu\unicode\locid.h" />
+    <ClInclude Include="icu\unicode\messagepattern.h" />
+    <ClInclude Include="icu\unicode\normalizer2.h" />
+    <ClInclude Include="icu\unicode\normlzr.h" />
+    <ClInclude Include="icu\unicode\parseerr.h" />
+    <ClInclude Include="icu\unicode\parsepos.h" />
+    <ClInclude Include="icu\unicode\platform.h" />
+    <ClInclude Include="icu\unicode\ptypes.h" />
+    <ClInclude Include="icu\unicode\putil.h" />
+    <ClInclude Include="icu\unicode\rbbi.h" />
+    <ClInclude Include="icu\unicode\rep.h" />
+    <ClInclude Include="icu\unicode\resbund.h" />
+    <ClInclude Include="icu\unicode\schriter.h" />
+    <ClInclude Include="icu\unicode\std_string.h" />
+    <ClInclude Include="icu\unicode\strenum.h" />
+    <ClInclude Include="icu\unicode\stringpiece.h" />
+    <ClInclude Include="icu\unicode\stringtriebuilder.h" />
+    <ClInclude Include="icu\unicode\symtable.h" />
+    <ClInclude Include="icu\unicode\ubidi.h" />
+    <ClInclude Include="icu\unicode\ubrk.h" />
+    <ClInclude Include="icu\unicode\ucasemap.h" />
+    <ClInclude Include="icu\unicode\ucat.h" />
+    <ClInclude Include="icu\unicode\uchar.h" />
+    <ClInclude Include="icu\unicode\ucharstrie.h" />
+    <ClInclude Include="icu\unicode\ucharstriebuilder.h" />
+    <ClInclude Include="icu\unicode\uchriter.h" />
+    <ClInclude Include="icu\unicode\uclean.h" />
+    <ClInclude Include="icu\unicode\ucnv.h" />
+    <ClInclude Include="icu\unicode\ucnvsel.h" />
+    <ClInclude Include="icu\unicode\ucnv_cb.h" />
+    <ClInclude Include="icu\unicode\ucnv_err.h" />
+    <ClInclude Include="icu\unicode\uconfig.h" />
+    <ClInclude Include="icu\unicode\udata.h" />
+    <ClInclude Include="icu\unicode\uenum.h" />
+    <ClInclude Include="icu\unicode\uidna.h" />
+    <ClInclude Include="icu\unicode\uiter.h" />
+    <ClInclude Include="icu\unicode\ulistformatter.h" />
+    <ClInclude Include="icu\unicode\uloc.h" />
+    <ClInclude Include="icu\unicode\umachine.h" />
+    <ClInclude Include="icu\unicode\umisc.h" />
+    <ClInclude Include="icu\unicode\unifilt.h" />
+    <ClInclude Include="icu\unicode\unifunct.h" />
+    <ClInclude Include="icu\unicode\unimatch.h" />
+    <ClInclude Include="icu\unicode\uniset.h" />
+    <ClInclude Include="icu\unicode\unistr.h" />
+    <ClInclude Include="icu\unicode\unorm.h" />
+    <ClInclude Include="icu\unicode\unorm2.h" />
+    <ClInclude Include="icu\unicode\uobject.h" />
+    <ClInclude Include="icu\unicode\urename.h" />
+    <ClInclude Include="icu\unicode\urep.h" />
+    <ClInclude Include="icu\unicode\ures.h" />
+    <ClInclude Include="icu\unicode\uscript.h" />
+    <ClInclude Include="icu\unicode\uset.h" />
+    <ClInclude Include="icu\unicode\usetiter.h" />
+    <ClInclude Include="icu\unicode\ushape.h" />
+    <ClInclude Include="icu\unicode\usprep.h" />
+    <ClInclude Include="icu\unicode\ustring.h" />
+    <ClInclude Include="icu\unicode\ustringtrie.h" />
+    <ClInclude Include="icu\unicode\utext.h" />
+    <ClInclude Include="icu\unicode\utf.h" />
+    <ClInclude Include="icu\unicode\utf16.h" />
+    <ClInclude Include="icu\unicode\utf32.h" />
+    <ClInclude Include="icu\unicode\utf8.h" />
+    <ClInclude Include="icu\unicode\utf_old.h" />
+    <ClInclude Include="icu\unicode\utrace.h" />
+    <ClInclude Include="icu\unicode\utypes.h" />
+    <ClInclude Include="icu\unicode\uvernum.h" />
+    <ClInclude Include="icu\unicode\uversion.h" />
+    <ClInclude Include="icu\unifiedcache.h" />
+    <ClInclude Include="icu\unisetspan.h" />
+    <ClInclude Include="icu\unormimp.h" />
+    <ClInclude Include="icu\uposixdefs.h" />
+    <ClInclude Include="icu\uprops.h" />
+    <ClInclude Include="icu\uresdata.h" />
+    <ClInclude Include="icu\uresimp.h" />
+    <ClInclude Include="icu\ureslocs.h" />
+    <ClInclude Include="icu\usc_impl.h" />
+    <ClInclude Include="icu\uset_imp.h" />
+    <ClInclude Include="icu\ustrenum.h" />
+    <ClInclude Include="icu\ustrfmt.h" />
+    <ClInclude Include="icu\ustr_cnv.h" />
+    <ClInclude Include="icu\ustr_imp.h" />
+    <ClInclude Include="icu\util.h" />
+    <ClInclude Include="icu\utracimp.h" />
+    <ClInclude Include="icu\utrie.h" />
+    <ClInclude Include="icu\utrie2.h" />
+    <ClInclude Include="icu\utrie2_impl.h" />
+    <ClInclude Include="icu\utypeinfo.h" />
+    <ClInclude Include="icu\uvector.h" />
+    <ClInclude Include="icu\uvectr32.h" />
+    <ClInclude Include="icu\uvectr64.h" />
+    <ClInclude Include="icu\wintz.h" />
+    <ClInclude Include="minizip\crypt.h" />
+    <ClInclude Include="minizip\ioapi.h" />
+    <ClInclude Include="minizip\iowin32.h" />
+    <ClInclude Include="minizip\mztools.h" />
+    <ClInclude Include="minizip\unzip.h" />
+    <ClInclude Include="minizip\zip.h" />
+    <ClInclude Include="pcre\config.h" />
+    <ClInclude Include="pcre\pcre.h" />
+    <ClInclude Include="pcre\pcre_internal.h" />
+    <ClInclude Include="pcre\pcre_stringpiece.h" />
+    <ClInclude Include="pcre\ucp.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

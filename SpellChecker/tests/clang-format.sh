@@ -1,0 +1,1 @@
+../src/nuspell/clang-format.sh

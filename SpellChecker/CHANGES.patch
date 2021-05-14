@@ -1,0 +1,349 @@
+ .gitignore                    |  27 +++-------
+ SpellChecker.vcxproj          |  99 ++++++++++++++++++++++++++++++++++
+ SpellChecker.vcxproj.filters  |  18 +++++++
+ libmain.cpp                   | 122 ++++++++++++++++++++++++++++++++++++++++++
+ src/nuspell/nuspell_export.h  |  18 +++++++
+ src/nuspell/nuspell_export2.h |  18 -------
+ 6 files changed, 263 insertions(+), 39 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 800d148..1c02f0d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,21 +1,6 @@
+-/build/
+-
+-# Doxygen https://www.stack.nl/~dimitri/doxygen/
+-/doxygen/
+-/Doxyfile.bak
+-
+-# QtCreator https://qt.io
+-/CMakeLists.txt.user
+-
+-# Visual Studio
+-/.vs/
+-/out/
+-/CMakeSettings.json
+-
+-# https://vim.sourceforge.io/
+-.?*.swp
+-
+-# Sourcetrail https://sourcetrail.com
+-/Nuspell.srctrlbm
+-/Nuspell.srctrldb
+-/Nuspell.srctrlprj
++/Debug
++/Logged Release
++/Release
++/x64/Debug
++/x64/Logged Release
++/x64/Release
+\ No newline at end of file
+diff --git a/SpellChecker.vcxproj b/SpellChecker.vcxproj
+new file mode 100644
+index 0000000..90e7daa
+--- /dev/null
++++ b/SpellChecker.vcxproj
+@@ -0,0 +1,99 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <ItemGroup Label="ProjectConfigurations">
++    <ProjectConfiguration Include="Debug|x64">
++      <Configuration>Debug</Configuration>
++      <Platform>x64</Platform>
++    </ProjectConfiguration>
++    <ProjectConfiguration Include="Release|x64">
++      <Configuration>Release</Configuration>
++      <Platform>x64</Platform>
++    </ProjectConfiguration>
++  </ItemGroup>
++  <ItemGroup>
++    <ClCompile Include="src/nuspell/aff_data.cxx" />
++    <ClCompile Include="src/nuspell/dictionary.cxx" />
++    <ClCompile Include="src/nuspell/finder.cxx" />
++    <ClCompile Include="libmain.cpp" />
++    <ClCompile Include="src/nuspell/utils.cxx" />
++  </ItemGroup>
++  <ItemGroup>
++    <ClInclude Include="src/nuspell/aff_data.hxx" />
++    <ClInclude Include="src/nuspell/dictionary.hxx" />
++    <ClInclude Include="src/nuspell/finder.hxx" />
++    <ClInclude Include="src/nuspell/nuspell_export.h" />
++    <ClInclude Include="src/nuspell/structures.hxx" />
++    <ClInclude Include="src/nuspell/utils.hxx" />
++  </ItemGroup>
++  <ItemGroup>
++    <ProjectReference Include="..\UtilsLib\UtilsLib.vcxproj">
++      <Project>{dd5ce980-85ee-4a11-a88c-a3c2d5edefed}</Project>
++    </ProjectReference>
++  </ItemGroup>
++  <PropertyGroup Label="Globals">
++    <ProjectGuid>{801B4EF7-3A98-4F17-9DEE-EF07A68062BF}</ProjectGuid>
++    <Keyword>MFCDLLProj</Keyword>
++  </PropertyGroup>
++  <Import Project="$(SolutionDir)\DrExplain.Toolset.props" />
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
++  <Import Project="$(SolutionDir)\DrExplain.MfcDll.props" />
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
++  <Import Project="$(SolutionDir)\DrExplain.ClCompile.props" />
++  <ImportGroup Label="ExtensionSettings">
++  </ImportGroup>
++  <ImportGroup Label="Shared">
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <PropertyGroup Label="UserMacros" />
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <OutDir>$(SolutionDir)__bin64\</OutDir>
++    <LinkIncremental>false</LinkIncremental>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <OutDir>$(SolutionDir)__bin64_debug\</OutDir>
++    <LinkIncremental>true</LinkIncremental>
++  </PropertyGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <ClCompile>
++      <PrecompiledHeader>NotUsing</PrecompiledHeader>
++      <WarningLevel>Level3</WarningLevel>
++      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;nuspell_EXPORTS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;ICU_NO_USER_DATA_OVERRIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers;$(ProjectDir)..\UtilsLib\icu</AdditionalIncludeDirectories>
++      <DisableSpecificWarnings>4267;4244;4101;4996</DisableSpecificWarnings>
++    </ClCompile>
++    <Link>
++      <SubSystem>Windows</SubSystem>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
++      <AdditionalDependencies>mfcs140ud.lib;%(AdditionalDependencies)</AdditionalDependencies>
++    </Link>
++  </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <ClCompile>
++      <WarningLevel>Level3</WarningLevel>
++      <PrecompiledHeader>NotUsing</PrecompiledHeader>
++      <Optimization>Full</Optimization>
++      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;nuspell_EXPORTS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;ICU_NO_USER_DATA_OVERRIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers;$(ProjectDir)..\UtilsLib\icu</AdditionalIncludeDirectories>
++      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
++      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
++      <DisableSpecificWarnings>4267;4244;4101;4996</DisableSpecificWarnings>
++    </ClCompile>
++    <Link>
++      <SubSystem>Windows</SubSystem>
++      <EnableCOMDATFolding>true</EnableCOMDATFolding>
++      <OptimizeReferences>true</OptimizeReferences>
++      <OutputFile>$(TargetPath)</OutputFile>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++      <AdditionalDependencies>mfcs140u.lib;%(AdditionalDependencies)</AdditionalDependencies>
++    </Link>
++  </ItemDefinitionGroup>
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
++  <ImportGroup Label="ExtensionTargets">
++  </ImportGroup>
++</Project>
+\ No newline at end of file
+diff --git a/SpellChecker.vcxproj.filters b/SpellChecker.vcxproj.filters
+new file mode 100644
+index 0000000..8cf8c46
+--- /dev/null
++++ b/SpellChecker.vcxproj.filters
+@@ -0,0 +1,18 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <ItemGroup>
++    <ClCompile Include="src/nuspell/aff_data.cxx" />
++    <ClCompile Include="src/nuspell/dictionary.cxx" />
++    <ClCompile Include="src/nuspell/finder.cxx" />
++    <ClCompile Include="src/nuspell/utils.cxx" />
++    <ClCompile Include="libmain.cpp" />
++  </ItemGroup>
++  <ItemGroup>
++    <ClInclude Include="src/nuspell/aff_data.hxx" />
++    <ClInclude Include="src/nuspell/dictionary.hxx" />
++    <ClInclude Include="src/nuspell/finder.hxx" />
++    <ClInclude Include="src/nuspell/nuspell_export.h" />
++    <ClInclude Include="src/nuspell/structures.hxx" />
++    <ClInclude Include="src/nuspell/utils.hxx" />
++  </ItemGroup>
++</Project>
+\ No newline at end of file
+diff --git a/libmain.cpp b/libmain.cpp
+new file mode 100644
+index 0000000..9b4befa
+--- /dev/null
++++ b/libmain.cpp
+@@ -0,0 +1,122 @@
++#ifndef _WIN32_WINNT
++#define _WIN32_WINNT _WIN32_WINNT_VISTA
++#endif
++
++#ifndef WINVER
++#define WINVER _WIN32_WINNT
++#endif
++
++#ifndef _WIN32_WINDOWS
++#define _WIN32_WINDOWS _WIN32_WINNT
++#endif
++
++#ifndef _WIN32_IE
++#define _WIN32_IE _WIN32_IE_IE70
++#endif
++
++#include <afxwin.h>
++
++#undef min
++#undef max
++
++#include <algorithm>
++
++#include "..\UtilsLib\icu\unicode\uclean.h"
++#include "..\UtilsLib\icu\unicode\putil.h"
++
++namespace
++{
++	// small version of Utils
++	CString fullFilename()
++	{
++		CString sResult;
++		GetModuleFileName(NULL, sResult.GetBuffer(32768 + 1), 32768);
++		sResult.ReleaseBuffer();
++		return sResult;
++	}
++	int	lastSlashPos(const CString& sFile)
++	{
++		int iLastSlash = sFile.ReverseFind(L'\\');
++		int iLastBackSlash = sFile.ReverseFind(L'/');
++		int iRetVal = std::max(iLastSlash, iLastBackSlash);
++		return iRetVal;
++	}
++	CString pathComponent(const CString& sFile)
++	{
++		int iLastSlash = lastSlashPos(sFile);
++		if (iLastSlash != -1)
++			return sFile.Left(iLastSlash);
++		return sFile;
++	}
++	CString filenameComponent(const CString& sFile)
++	{
++		int iLastSlash = lastSlashPos(sFile);
++		if (iLastSlash != -1)
++			return sFile.Right(sFile.GetLength() - iLastSlash - 1);
++		return sFile;
++	}
++	CString addPathComponent(const CString& sPath, const CString& sComponent)
++	{
++		return sPath + L"\\" + sComponent;
++	}
++	CString path()
++	{
++		return pathComponent(fullFilename());
++	}
++	CString rpath()
++	{
++#ifdef _DEBUG
++		const auto exe_path = path();
++		if (filenameComponent(exe_path) == L"__bin64_debug")
++			return addPathComponent(pathComponent(exe_path), L"__bin64");
++		if (filenameComponent(pathComponent(exe_path)) == L"__bin64_debug")
++			return addPathComponent(addPathComponent(pathComponent(pathComponent(exe_path)), L"__bin64"), filenameComponent(exe_path));
++		return exe_path;
++#else
++		return path();
++#endif
++	}
++	BOOL exists(const CString& sFolderPath)
++	{
++		CString sPath = sFolderPath;
++		if (sFolderPath == L"\\")
++			return TRUE;
++
++		if (sPath.IsEmpty())
++			return FALSE;
++
++		DWORD dwAttrib = GetFileAttributes(sPath);
++		return (dwAttrib != INVALID_FILE_ATTRIBUTES &&
++			(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
++	}
++}
++
++class CSpellCheckerApp final : public CWinApp
++{
++public:
++	CSpellCheckerApp()
++	{
++	}
++
++public:
++	BOOL InitInstance() override
++	{
++		CString sICUDataFolder = addPathComponent(rpath(), L"icu_data");
++		if (!exists(sICUDataFolder))
++			sICUDataFolder = addPathComponent(rpath(), L"..\\icu_data");
++		ASSERT(exists(sICUDataFolder));
++		u_setDataDirectory(CStringA(sICUDataFolder));
++		UErrorCode errorCode = U_ZERO_ERROR;
++		u_init(&errorCode);
++		ASSERT(U_SUCCESS(errorCode));
++		return __super::InitInstance();
++	}
++
++	int ExitInstance() override
++	{
++		u_cleanup();
++		return __super::ExitInstance();
++	}
++};
++
++CSpellCheckerApp theApp;
+\ No newline at end of file
+diff --git a/src/nuspell/nuspell_export.h b/src/nuspell/nuspell_export.h
+new file mode 100644
+index 0000000..a7f4a5a
+--- /dev/null
++++ b/src/nuspell/nuspell_export.h
+@@ -0,0 +1,18 @@
++#ifndef NUSPELL_EXPORT_H
++#define NUSPELL_EXPORT_H
++
++#ifdef NUSPELL_STATIC_DEFINE
++#  define NUSPELL_EXPORT
++#elif defined(_WIN32) || defined(__CYGWIN__)
++#  ifdef nuspell_EXPORTS // Define this only when building Nuspell as DLL on Windows, not when using the DLL.
++#    define NUSPELL_EXPORT __declspec(dllexport)
++#  else
++#    define NUSPELL_EXPORT __declspec(dllimport)
++#  endif
++#elif __GNUC__ >= 4
++#  define NUSPELL_EXPORT __attribute__((visibility("default")))
++#else
++#  define NUSPELL_EXPORT
++#endif
++
++#endif /* NUSPELL_EXPORT_H */
+diff --git a/src/nuspell/nuspell_export2.h b/src/nuspell/nuspell_export2.h
+deleted file mode 100644
+index a7f4a5a..0000000
+--- a/src/nuspell/nuspell_export2.h
++++ /dev/null
+@@ -1,18 +0,0 @@
+-#ifndef NUSPELL_EXPORT_H
+-#define NUSPELL_EXPORT_H
+-
+-#ifdef NUSPELL_STATIC_DEFINE
+-#  define NUSPELL_EXPORT
+-#elif defined(_WIN32) || defined(__CYGWIN__)
+-#  ifdef nuspell_EXPORTS // Define this only when building Nuspell as DLL on Windows, not when using the DLL.
+-#    define NUSPELL_EXPORT __declspec(dllexport)
+-#  else
+-#    define NUSPELL_EXPORT __declspec(dllimport)
+-#  endif
+-#elif __GNUC__ >= 4
+-#  define NUSPELL_EXPORT __attribute__((visibility("default")))
+-#else
+-#  define NUSPELL_EXPORT
+-#endif
+-
+-#endif /* NUSPELL_EXPORT_H */
