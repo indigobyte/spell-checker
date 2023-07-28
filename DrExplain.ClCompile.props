@@ -4,11 +4,13 @@
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level4</WarningLevel>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <EnforceTypeConversionRules>false</EnforceTypeConversionRules>
+      <AdditionalOptions>/Zc:referenceBinding- %(AdditionalOptions)</AdditionalOptions>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4100;4189;4238;4239;4244;4245;4389;4456;4457;4458;4459;4702;4706;4840;4996;5054;5055</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4189;4238;4239;4244;4245;4389;4456;4457;4458;4459;4471;4702;4706;4840;4996;5054;5055</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\UtilsLib\additional\include\path;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)ThirdPartyLibs\installed\x64-custom\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>

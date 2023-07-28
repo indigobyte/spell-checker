@@ -1,10 +1,11 @@
 <?xml version = "1.0" encoding="utf-8"?> 
 <Project ToolsVersion = "4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
   <PropertyGroup Label="Globals">
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <PropertyGroup> 
-    <VCToolsVersion>14.28.29910</VCToolsVersion>
+  <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <PlatformToolset>v143</PlatformToolset>
+    <VCToolsVersion>14.36.32532</VCToolsVersion>
   </PropertyGroup>
 </Project>

@@ -11,24 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src/nuspell/aff_data.cxx" />
-    <ClCompile Include="src/nuspell/dictionary.cxx" />
-    <ClCompile Include="src/nuspell/finder.cxx" />
-    <ClCompile Include="libmain.cpp" />
-    <ClCompile Include="src/nuspell/utils.cxx" />
+    <ClCompile Include="src\nuspell\icu.cpp" />
+    <ClCompile Include="src\nuspell\spell.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src/nuspell/aff_data.hxx" />
-    <ClInclude Include="src/nuspell/dictionary.hxx" />
-    <ClInclude Include="src/nuspell/finder.hxx" />
-    <ClInclude Include="src/nuspell/nuspell_export.h" />
-    <ClInclude Include="src/nuspell/structures.hxx" />
-    <ClInclude Include="src/nuspell/utils.hxx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UtilsLib\UtilsLib.vcxproj">
-      <Project>{dd5ce980-85ee-4a11-a88c-a3c2d5edefed}</Project>
-    </ProjectReference>
+    <ClInclude Include="src\nuspell\icu.h" />
+    <ClInclude Include="src\nuspell\spell.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{801B4EF7-3A98-4F17-9DEE-EF07A68062BF}</ProjectGuid>
@@ -62,24 +50,26 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;nuspell_EXPORTS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;ICU_NO_USER_DATA_OVERRIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers;$(ProjectDir)..\UtilsLib\icu</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4267;4244;4101;4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;icudtd.lib;icuucd.lib;nuspell.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdPartyLibs\installed\x64-custom\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>"$(SolutionDir)signtool\sign_file.bat" "$(TargetPath)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>Full</Optimization>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;nuspell_EXPORTS;U_COMMON_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;ICU_NO_USER_DATA_OVERRIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\common-helpers;$(ProjectDir)..\UtilsLib\icu</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <DisableSpecificWarnings>4267;4244;4101;4996</DisableSpecificWarnings>
@@ -90,8 +80,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <OutputFile>$(TargetPath)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;icudt.lib;icuuc.lib;nuspell.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdPartyLibs\installed\x64-custom\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>"$(SolutionDir)signtool\sign_file.bat" "$(TargetPath)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,18 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src/nuspell/aff_data.cxx" />
-    <ClCompile Include="src/nuspell/dictionary.cxx" />
-    <ClCompile Include="src/nuspell/finder.cxx" />
-    <ClCompile Include="src/nuspell/utils.cxx" />
-    <ClCompile Include="libmain.cpp" />
+    <ClCompile Include="src\nuspell\icu.cpp" />
+    <ClCompile Include="src\nuspell\spell.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src/nuspell/aff_data.hxx" />
-    <ClInclude Include="src/nuspell/dictionary.hxx" />
-    <ClInclude Include="src/nuspell/finder.hxx" />
-    <ClInclude Include="src/nuspell/nuspell_export.h" />
-    <ClInclude Include="src/nuspell/structures.hxx" />
-    <ClInclude Include="src/nuspell/utils.hxx" />
+    <ClInclude Include="src\nuspell\icu.h" />
+    <ClInclude Include="src\nuspell\spell.h" />
   </ItemGroup>
 </Project>
